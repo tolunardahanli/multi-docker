@@ -14,7 +14,7 @@ after_success: # after_success test build prod images
   - docker build -t tolunardahanli/multi-server ./server
   - docker build -t tolunardahanli/multi-worker ./worker
   # Log in to the docker CLI
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   
   # Take those images and push them to dockerHub
   - docker push tolunardahanli/multi-client
