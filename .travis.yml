@@ -9,7 +9,7 @@ script:
   - docker run -e CI=true tolunardahanli/react-test npm test
 
 after_success: # after_success test build prod images
-  - docket build -t tolunardahanli/multi-client ./client
+  - docker build -t tolunardahanli/multi-client ./client
   - docker build -t tolunardahanli/multi-nginx ./nginx
   - docker build -t tolunardahanli/multi-server ./server
   - docker build -t tolunardahanli/multi-worker ./worker
