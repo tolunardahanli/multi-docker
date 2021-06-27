@@ -21,3 +21,15 @@ after_success: # after_success test build prod images
   - docker push tolunardahanli/multi-nginx
   - docker push tolunardahanli/multi-server
   - docker push tolunardahanli/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "multi-docker"
+  env: "Multidocker-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-115591746071"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
